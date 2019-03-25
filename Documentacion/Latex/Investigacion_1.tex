@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \graphicspath{{imagenes}}
-\title{Manual del proyecto 1 de la materia Estructuras de Datos 2}
+\title{Proyecto 1. Estructuras de Datos y Algoritmos II}
 \author{Barrera Peña Víctor Miguel \\
 		Roldán Franco Luis Miguel \\
 		Velázquez de León Lavarrios Alvar 
@@ -16,30 +16,85 @@
 \begin{document}
 	\maketitle
 	\section{Introducción}
+	Los algoritmos de ordenamiento han sido fundamentales en el campo de la computación debido a que nos permiten manejar con mayor facilidad
+	los datos almacenados en una estructura, optimizan el trabajo de otros algoritmos, además de que son la base para programas que implican un
+	mayor nivel de análisis y de programación. De los algoritmos es importante conocer la eficiencia de los mismos, ya que no todos realizan esta tarea
+	con las mismas características, cada uno implica un costo distinto ya sea en cuanto a la eficiencia en rapidez (¿quién ordena más rápido?), y/o a
+	memoria adicional utilizada.
+	
+	Todo esto se realiza a nivel de memoria principal, pero cuando se desea ordenar desde memoria externa, es decir archivos, implica otros costos y otra
+	forma de interpretar a los algoritmos. Por lo general, el ordenamiento externo se da cuando se tiene un enorme flujo de información el cual no puede ser procesado
+	por completo desde la memoria principal
+	
 	\section{Marco Teórico}
-		\paragraph{Algoritmo de Mezcla equilibrada}
-		\paragraph{Algoritmo Radix}
-		\subsection{Algortimo de Polifase}
+		\subsection{Algoritmo de Mezcla equilibrada}
+		Consiste en una mejora del método de ordenamiento por Mezcla Directa. Se trata de ir leyendo los elementos del archivo tomando secuencias que se encuentran ordenadas.
+		Cuando se lee un elemento que ya no está ordenado con los leidos previamente se guardan dicho bloque en un primer archivo auxiliar. Se continúa leyendo el archivo
+		principal hasta que la segunda secuencia también esté ordenada y se guarda el bloque en un segundo archivo auxiliar. Se repite el procedimiento alternando los bloques en ambos archivos
+		hasta que el archivo de entrada haya sido leído completamente.\\
 		
-		\section{title}
-	\subsection{Análisis}
-	\subsection{Diseño}
-	\section{Desarrollo}
+		La mezcla entre los bloques de ambos archivos también se realiza de manera alternada ordenando los elementos y sobre-escribiendo el archivo original. Se vuelve a leer el mismo archivo
+		y se repiten los procedimientos.
+		
+		\subsection{Algoritmo Radix}
+		Como su nombre lo indica, este algoritmo de ordenamiento está basado en el método de \textit{RadixSort}. El algoritmo lee determinado dígito de cada una de las cadenas y las
+		va almacenando en determinada cola. De las colas se generan los archivos. Hay un archivo para cada uno de los dígitos leidos, y de estos se genera un nuevo archivo con el ordenamiento
+		de los elementos por cierto dígito. El procedimiento se repite hasta que se hayan leído todos los dígitos de cada una de las cadenas.
+		
+		\subsection{Algortimo de Polifase}
+		El ordenamiento por el método de polifase consiste en mezclar los elementos de un archivo hasta que esté vacío.
+		La ordenamiento se da de la siguiente manera:
+		
+		\begin{itemize}
+			\item Lee m llaves, se ordenan mediante un método interno y se genera un primer bloque, el cual se guarda en un primer archivo auxiliar.
+			\item Lee otras m llaves, se ordenan y se genera otro bloque que se guarda en un segundo archivo auxiliar.
+			\item Se leen otras m llaves y se ordenan, pero se guardan en el primer archivo en un segundo bloque. Se repiten los pasos anteriores.
+		\end{itemize} 
+		
+		La mezcla de los bloques se realiza de la siguiente manera:
+		
+		\begin{itemize}
+			\item Se intercalan los primeros bloques de cada archivo auxiliar, se ordenan y se guardan en un tercer archivo auxiliar.
+			\item Los siguientes bloques se ordenan y guardan en un cuarto archivo.
+			\item Se repiten los pasos hasta que se genere un único archivo con todas las claves ordenadas.
+		\end{itemize}
+	
+	\section{Análisis y Desarrollo}
 		
 	\subsection{Implementación}
-		Primero es necesario leer la documentación de los algoritmos que se implementaron para ordenar  para comprender como es que se dividió el programa para su posterior explicación general.
-		
+	 Para comprender de manera detallada la implementación de los algoritmos se recomienda leer la documentación de cada uno de ellos.
+	 A continuación se presenta una descripción general de cada uno de los algoritmos.
 	
 	\paragraph*{Explicación del menu principal}
 	
 	\paragraph*{Explicación de Polifase}
+	El primer paso del programa es determinar la ruta del archivo que se va a leer, para ello se utilizaron las clases de java.io pero a su vez
+	se utilizaron las sentencias \textit{try-catch}, ya que se pueden generar excepciones de entrada/salida durante la ejecución del programa.\\
+	
+	Se utilizó un objeto de tipo \textit{StringBuilder} que fue almacenando los caracteres de cada llave. Cuando se encontrase una coma durante 
+	la lectura del archivo la clave se genera como un String y se guarda en una lista dependiendo el bloque al que pertenece. La lista se ordena 
+	mediante el método \textit{bubbleSort()} y las claves se escriben en su respectivo archivo con la ayuda del método \textit{escribirArchivo()}.\\
+	
+	Al asignar bloques con un tamaño fijo por lo general quedan algunas claves sobrantes en el archivo, por lo que también se deben ordenar, se 
+	genera un bloque con tamaño distinto y se escribe al archivo al que pertenece. A pesar de haber un bloque de tamaño distinto al solicitado este 
+	no afecta a lecturas posteriores.\\
+	
+	Luego de generar los archivos auxiliares ambos se leen y las llaves que contienen sus bloques se mezclan y ordenan con el método \textit{intercalarArchivos()} 
+	creando así un nuevo bloque con el doble de tamaño. Los nuevos bloques nones y pares generados se escriben en su respectivo archivo (impar o par). 
+	Al igual que con la lectura del archivo inicial siempre se generan bloques de tamaño irregular, por lo que se hace el mismo procedimiento para acoplarlos 
+	al archivo auxiliar correspondiente.\\
+	
+	El paso anterior se repite hasta que todas las claves se encuentren en un solo archivo auxiliar, que por lo general es un archivo impar. 
+	Por lo tanto, el proceso termina hasta que el último archivo auxiliar par generado se encuentre vacío.\\
 	
 	\paragraph*{Explicación Radix Sort}
 	
 	\paragraph*{Explicación de Mezcla equilibrada}
-	
-	
-
+	El funcionamiento del programa se basa en leer un archivo dado, caracter a caracter e irlos añadiendo a una cadena que se guarda en una lista. 
+	Cuando un elemento es mayor al anterior se imprimen los contenidos de la lista en uno de los archivos agregando ':' como separación entre bloques y la lista se vacía. 
+	Después los dos archivos auxiliares se leen y se crean 2 listas cuyos contenidos se irán comparando e imprimiendo en el archivo hasta que alguna de las listas quede vacía, 
+	en ese caso se terminara de vaciar la lista restante en el archivo. Este procesos se repetira hasta que todos los bloques hayan sido insertados en el archivo original. 
+	Finalmente el proceso se repetira, hasta que quede completamente ordenado.
 	
 	\subsection{Pruebas}
 		\paragraph*{Pruebas previas de código}
@@ -63,7 +118,14 @@
 			\item 	\url{https://github.com/EzioFenix7/Proyect_eda/tree/master/Documentacion/Equilibrada}
 			\href{https://github.com/EzioFenix7/Proyect_eda/tree/master/Documentacion/Equilibrada}{Direccion de documentacion de Mezcla Equilbrada}
 		\end{itemize}
-	\subsection{Mantenimiento}
-	\section{Conclusión}
+
+	\section{Conclusiones}
+	El ordenamiento por Polifase se pudo implementar correctamente debido a que se generaron los archivos con las iteraciones adecuadas, mostrando la posición en la que debería ir cada elemento.
+	Internamente puede llegar a ser ineficiente debido a que las claves leidas las ordena mediante el método de \textit{BubbleSort}. Su ejecución se pudo realizar satisfactoriamente en los sistemas operativos
+	Windows y MacOS.\\
+	
+	Mezcla equilibrada es un método bastante rápido pero un poco dificil de implementar ya que suele terminar con bloques de grandes tamaños asi que para el uso de listas podría no ser tan eficiente. Tambien como la lectura con \textit{BufferedReader} regresa un entero este debe convertirse a un caracter para poder formar el elemento a evaluar, adicionalmente este método se realizo en una mac asi que los valores devueltos corresponden a unicode por lo cual se deberan hacer ciertos ajustes para su uso en otros sistemas operativos.
+	
 	\subsection{Observaciones}
+	
 \end{document}
