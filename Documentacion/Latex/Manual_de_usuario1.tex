@@ -3,7 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
 \graphicspath{{imagenes}}
-\title{Manual del proyecto I \\ Materia: \\Estructuras de Datos 2\\ 
+\title{Manual del proyecto I \\ Materia: \\Estructuras de Datos y Algoritmos II\\ 
 \large Métodos de ordenamiento}
 
 \author{
@@ -20,17 +20,17 @@
 	Este programa  esta hecho para poder ordenar un archivo mediante 3 métodos de ordenamiento como son: Polifase, Radix, Mezcla equilibrada.
 	Para poder lograr el perfecto funcionamiento de este programa se tiene que considerar lo siguiente:
 	\begin{itemize}
-		\item No se debe borrar ningún archivo del programa, con esto quiero decir que si se genera un nuevo documento el programa, no se debe borrar, este automáticamente se borrará.
 		\item Si el programa especifica que se introduzca un número para seleccionar una opcion, no es valido introducir un carácter o signos diferentes a números, en caso de introducir estos, sucederá un error y tendrá que volverse a iniciar el programa.
 		\item No debe estar abierto durante la ejecución el archivo ``texto.txt'' , ya algunos editores de texto restringe la modificación de este durante la ejecución.
+		\item Los archivos auxiliares generados por Polifase deben de ser eliminados manualmente cuando se desee realizar otra ejecución.
+		Esto con el propósito de liberar espacio en el escritorio.
+		\item Si un método especifica que se introduzcan datos estos deben de ser correcto, o de lo contrario podrían surgir errores.
 	\end{itemize}
 	Para el archivo tiene a ordenar debe cumplir con ciertos requisitos para poder ser ordenado que se en listan a continuación:
 	\begin{itemize}
-		\item Tiene que llamarse ``texto.txt'' y tiene que estar en el escritorio de la computadora desde donde se ejecuta.
-		\item Dentro del contenido  archivo, debe empezar por un número.
-		\item La separación entre  números debe estar unicamente dada por una coma(,) y para delimitar un número (su final) también debe tener una. Por ejemplo el archivo contendría en su interior la siguiente cadena={3,9,6,}
-		\item El ordinal de números no esta determinado , es al gusto. 
-		\item En el archivo original no debe contener saltos de linea, en caso de contener, este debe empezar de nuevo con un número, y el anterior debe renglon debe haber terminado en coma.
+		\item Para Radix y Mezcla Equilibrada tiene que llamarse ``texto.txt'' y tiene que estar en el escritorio de la computadora desde donde se ejecuta.
+		\item Para Polifase existen dos archivos ``textop1.txt" y ``textop2.txt" y también se deben de ubicar en el escritorio de la computadora.
+		\item Los archivos deben de contener cadenas de tres caracteres separadas por comas. Por ejemplo: {uad,eed,osr,...}.
 	\end{itemize}
 	
 	\chapter{Paso 1 ¿Qué desea hacer? (Menú principal)}
@@ -42,14 +42,27 @@
 	\end{itemize}
 
 	\chapter{Paso 2 Seleccione un método de ordenamiento (Menú de ordenamiento)}
-	Debe considerar que tiene que existir un archivo que desee emplear para ordenar, debe estar en el escritorio de su computadora.
+	Debe considerar que tiene que existir un archivo que desee emplear para ordenar, debe estar en el escritorio de su computadora.\\
 	
 	Aparecerá un menú donde usted podrá seleccionar con que método desea ordenar el archivo, introducirá un numero entre el 0 y el 3 de acuerdo al método de ordenamiento que desee.
-	Si introduce un número fuera de esta lista de valores, el programa igual que en el caso anterior, le preguntará por un número valido entre 0 y 3.
+	Si introduce un número fuera de esta lista de valores, el programa igual que en el caso anterior, le preguntará por un número valido entre 0 y 3.\\
+	
+	Si se seleccionó Polifase se deben ingresar desde teclado el nombre del archivo especificado para este método y el número de llaves que se deseen leer. Durante su ejecución se
+	generarán varios archivos auxiliares que sirven como parte de las iteraciones que realiza el programa. Los archivos auxiliares de Polifase tienen por nombre $PolifaseX.txt$ y se deben de
+	abrir con algún editor de textos para ver las iteraciones realizadas por el programa. El último archivo generado por el programa es el archivo final ordenado.
 
 	\chapter{Paso 3 Revisar el archivo ya ordenado}
-	En el escritorio de tu computadora, saldrá con el mismo nombre el archivo ``texto.txt'' y ya estará ordenado.
-	\\Podrá realizar otro ordenamiento, pero si lo realiza inmediatamente no sucederá nada, porqué ya esta ordenado. Lo mejor sería  darle `0' para que termine la ejecución y de esta manera revisarlo con más detenimiento.
+	\paragraph{Radix y Mezcla Equilibrada}
+	En el escritorio de la computadora, el archivo final saldrá con el mismo nombre ``texto.txt'' el cual ya estará ordenado.\\
+	
+	Podrá realizar otro ordenamiento, pero si lo realiza inmediatamente no sucederá nada, porqué ya esta ordenado. Lo mejor sería  darle `0' para que termine la ejecución y de esta manera revisarlo con más detenimiento.
+	
+	\paragraph{Polifase}
+	En el escritorio de la computadora se encontraran varios archivos auxiliares con la nomenclatura $PolifaseX.txt$, pero solamente el último que se generó es el archivo
+	que ya se encuentra ordenado.\\
+	
+	Para realizar algún otro ordenamiento se deben \textbf{eliminar todos los archivos auxiliares} generados de manera manual, porque de lo contrario afectaría ejecuciones
+	futuras de los otros métodos y del mismo.\\
 	
 	Con lo anterior dichos es posible decir que se termino con éxito el programa, si se presento un error es porque no se siguió las instrucciones de este manual,
 	o en su defecto hay un error que no esta asociado con este. 
