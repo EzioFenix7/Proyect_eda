@@ -19,12 +19,14 @@
 	Los algoritmos de ordenamiento han sido fundamentales en el campo de la computación debido a que nos permiten manejar con mayor facilidad
 	los datos almacenados en una estructura, optimizan el trabajo de otros algoritmos, además de que son la base para programas que implican un
 	mayor nivel de análisis y de programación. De los algoritmos es importante conocer la eficiencia de los mismos, ya que no todos realizan esta tarea
-	con las mismas características, cada uno implica un costo distinto ya sea en cuanto a la eficiencia en rapidez (¿quién ordena más rápido?), y/o a
-	memoria adicional utilizada.
+	con las mismas características, cada uno implica un costo distinto ya sea en cuanto a la eficiencia en rapidez (¿quién ordena más rápido?), y/o la
+	memoria adicional utilizada.\\
 	
 	Todo esto se realiza a nivel de memoria principal, pero cuando se desea ordenar desde memoria externa, es decir archivos, implica otros costos y otra
 	forma de interpretar a los algoritmos. Por lo general, el ordenamiento externo se da cuando se tiene un enorme flujo de información el cual no puede ser procesado
-	por completo desde la memoria principal
+	por completo desde la memoria principal, sino que se tienen que procesar datos por bloques y guardar los resultados parciales en archivos auxiliares.\\
+	
+	En este documento se analizarán algunos de los métodos de ordenamiento externo.
 	
 	\section{Marco Teórico}
 		\subsection{Algoritmo de Mezcla equilibrada}
@@ -39,7 +41,8 @@
 		\subsection{Algoritmo Radix}
 		Como su nombre lo indica, este algoritmo de ordenamiento está basado en el método de \textit{RadixSort}. El algoritmo lee determinado dígito de cada una de las cadenas y las
 		va almacenando en determinada cola. De las colas se generan los archivos. Hay un archivo para cada uno de los dígitos leidos, y de estos se genera un nuevo archivo con el ordenamiento
-		de los elementos por cierto dígito. El procedimiento se repite hasta que se hayan leído todos los dígitos de cada una de las cadenas.
+		de los elementos por cierto dígito. El procedimiento se repite hasta que se hayan leído todos los dígitos de cada una de las cadenas de tal manera que en el archivo final los elementos ya
+		estén ordenados.
 		
 		\subsection{Algortimo de Polifase}
 		El ordenamiento por el método de polifase consiste en mezclar los elementos de un archivo hasta que esté vacío.
@@ -59,6 +62,37 @@
 			\item Se repiten los pasos hasta que se genere un único archivo con todas las claves ordenadas.
 		\end{itemize}
 	
+	\section{Antecedentes}
+	Para la implementación de los métodos todos tienen como base fundamental a la clase \textit{BufferedReader} de Java la cual se encarga de
+	leer el contenido de los archivos. Anexada a esta también se encuentran otras clases del paquete \textit{java.io} como \textit{FileInputStream}, \textit{InputStreamReader}
+	y \textit{File}.\\
+	
+	Otra clase fundamental para los tres programas fue \textit{PrintWriter} para la sobre-escritura de los archivos.\\
+	
+	Para que todas las clases anteriores funcionaran se tuvieron que exportar las ecxepciones \textit{IOException} y \textit{FileNotFoundexception} debido a que durante
+	la ejecución de los programas se podría dar un error en la entrada o no se encontraba el archivo a leer.\\
+	
+	Debido a que se están ordenando cadenas de caracteres algunos de los métodos como Polifase requirieron una clase llamada \textit{StringBuilder} para convertir cada
+	uno de los caracteres leídos en un String y guardarlo en una lista para su posterior ordenamiento.\\
+	
+	Para el menú principal se utilizó a la clase \textit{Scanner} para leer desde teclado y asignar el valor a alguna de las opciones del menú mediante un switch.\\
+	
+	A continuación se muestran algunas fuentes consultadas para la realización del proyecto:
+	
+	\begin{itemize}
+		\item  \href{https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html}{Class BufferedReader}\\
+		\url{https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html}
+		
+		\item \href{https://es.slideshare.net/Krish_ver2/39-external-sorting}{External Sorting}\\
+		\url{https://es.slideshare.net/Krish_ver2/39-external-sorting}
+		
+		\item \href{https://www.tutorialspoint.com/java/io/bufferedreader_read_char_len.htm}{Java.io.BufferedReader.read() Method}\\
+		\url{https://www.tutorialspoint.com/java/io/bufferedreader_read_char_len.htm}
+		
+		\item \href{https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html}{Class StringBuilder}\\
+		\url{https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html}
+	\end{itemize}
+	
 	\section{Análisis y Desarrollo}
 		
 	\subsection{Implementación}
@@ -66,6 +100,13 @@
 	 A continuación se presenta una descripción general de cada uno de los algoritmos.
 	
 	\paragraph*{Explicación del menu principal}
+	El menú principal está compuesto por dos opciones: si se elije 0 terminará la ejecución del programa, si se elige 1 se abrirá un submenú donde
+	se seleccionará un método para ordenar, si se introduce algún otro número el programa entrará en un ciclo hasta que el usuario seleccione
+	correctamente alguna de las dos opciones anteriores.\\
+	
+	En el menú de para seleccionar los métodos se encuentran las siguientes opciones: 0 para regresar al menú principal, 1 para el ordenaimento por
+	Distribución (Radix), 2 para el ordenamiento por Mezcla Equilibrada, 3 para el ordenamiento por Polifase, y si se mete algún otro valor se
+	entrará en un ciclo hasta seleccionar alguna de las opciones mencionadas.\\
 	
 	\paragraph*{Explicación de Polifase}
 	El primer paso del programa es determinar la ruta del archivo que se va a leer, para ello se utilizaron las clases de java.io pero a su vez
@@ -107,6 +148,7 @@
 		
 		\paragraph*{Pruebas de la versión final del proyecto}
 		En esta sección se muestra el programa funcionando en una computadora con sistema Windows, para probar que el proyecto funcione, no se ha dicho que no funcione en otro sistema operativo, pero para caso de análisis lo hacemos solo en este.
+		
 	\subsection{Documentación}
 		\begin{itemize}
 			\item \url{https://github.com/EzioFenix7/Proyect_eda/tree/master/Documentacion/Polifase}
@@ -121,11 +163,10 @@
 
 	\section{Conclusiones}
 	El ordenamiento por Polifase se pudo implementar correctamente debido a que se generaron los archivos con las iteraciones adecuadas, mostrando la posición en la que debería ir cada elemento.
-	Internamente puede llegar a ser ineficiente debido a que las claves leidas las ordena mediante el método de \textit{BubbleSort}. Su ejecución se pudo realizar satisfactoriamente en los sistemas operativos
+	Internamente puede llegar a ser ineficiente debido a que las claves leidas las ordena mediante el método de \textit{BubbleSort}, así como también de requerir memoria adicional para almacenar
+	los datos listas temporales y ocupar varios objetos de algunas clases de Java para la lectura/escritura de los archivos. Su ejecución se pudo realizar satisfactoriamente en los sistemas operativos
 	Windows y MacOS.\\
 	
-	Mezcla equilibrada es un método bastante rápido pero un poco dificil de implementar ya que suele terminar con bloques de grandes tamaños asi que para el uso de listas podría no ser tan eficiente. Tambien como la lectura con \textit{BufferedReader} regresa un entero este debe convertirse a un caracter para poder formar el elemento a evaluar, adicionalmente este método se realizo en una mac asi que los valores devueltos corresponden a unicode por lo cual se deberan hacer ciertos ajustes para su uso en otros sistemas operativos.
-	
-	\subsection{Observaciones}
+	Mezcla equilibrada es un método bastante rápido pero un poco dificil de implementar ya que suele terminar con bloques de grandes tamaños asi que para el uso de listas podría no ser tan eficiente. Tambien como la lectura con \textit{BufferedReader} regresa un entero este debe convertirse a un caracter para poder formar el elemento a evaluar, adicionalmente este método se realizo en una mac asi que los valores devueltos corresponden a unicode por lo cual se deberan hacer ciertos ajustes para su uso en otros sistemas operativos.\\
 	
 \end{document}
