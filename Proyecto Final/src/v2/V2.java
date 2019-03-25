@@ -58,7 +58,7 @@ public class V2
 				Scanner nombrea = new Scanner(System.in);
                                 System.out.println("Ingrese la ruta absoluta del archivo archivo: ");
 				String archivo = nombrea.next();
-				Equilibrada equilibrada= new equilibrada(archivo);
+				Equilibrada equilibrada= new Equilibrada(archivo);
 				equilibrada.lectura();
 
                             } 
