@@ -62,12 +62,12 @@ public class V2
                             {
                                 System.out.println("Selecciono Polifase");
                                 System.out.println("Ingrese el nombre el archivo: ");
-		                        String archivo = sc.next();
-		                        System.out.println("Ingrese número de llaves: ");
-		                        int llaves = sc.nextInt();
+		                String archivo = sc.next();
+		                System.out.println("Ingrese número de llaves: ");
+		                int llaves = sc.nextInt();
 
-		                        Polifase polifase = new Polifase(archivo,llaves);
-		                        polifase.polifase();
+		                Polifase polifase = new Polifase(archivo,llaves);
+		                polifase.polifase();
                             } 
                             break; 
                         }
