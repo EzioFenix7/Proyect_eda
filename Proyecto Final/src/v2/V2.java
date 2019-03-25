@@ -60,8 +60,10 @@ public class V2
                             break; 
                             case 3: //Polifase
                             {
+				Scanner sc = new Scanner(System.in);
                                 System.out.println("Selecciono Polifase");
                                 System.out.println("Ingrese el nombre el archivo: ");
+				    
 		                String archivo = sc.next();
 		                System.out.println("Ingrese número de llaves: ");
 		                int llaves = sc.nextInt();
