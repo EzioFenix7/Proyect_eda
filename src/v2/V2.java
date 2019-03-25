@@ -5,6 +5,8 @@
  */
 package v2;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Ezio
@@ -22,7 +24,7 @@ public class V2
        do 
        {
             menu();
-            op=util.entre(0,4);
+            op=util.entre(0,1);
            switch(op)
            {
                case 0:
@@ -59,7 +61,13 @@ public class V2
                             case 3: //Polifase
                             {
                                 System.out.println("Selecciono Polifase");
+                                System.out.println("Ingrese el nombre el archivo: ");
+		                        String archivo = sc.next();
+		                        System.out.println("Ingrese número de llaves: ");
+		                        int llaves = sc.nextInt();
 
+		                        Polifase polifase = new Polifase(archivo,llaves);
+		                        polifase.polifase();
                             } 
                             break; 
                         }
