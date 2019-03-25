@@ -41,26 +41,37 @@
 		\subsection{Algoritmo Radix}
 		Como su nombre lo indica, este algoritmo de ordenamiento está basado en el método de \textit{RadixSort}. El algoritmo lee determinado dígito de cada una de las cadenas y las
 		va almacenando en determinada cola. De las colas se generan los archivos. Hay un archivo para cada uno de los dígitos leidos, y de estos se genera un nuevo archivo con el ordenamiento
-		de los elementos por cierto dígito. El procedimiento se repite hasta que se hayan leído todos los dígitos de cada una de las cadenas de tal manera que en el archivo final los elementos ya
-		estén ordenados.
+		de los elementos por cierto dígito. El procedimiento se repite hasta que se hayan leído todos los dígitos de cada una de las cadenas.\\
+		
+		Radix Sort consiste en tener un conjunto de datos desordenados asociados a una estructura, en este caso un archivo. En donde se determinará el tamaño maximo presente en esta estructura.
+		En base al tamaño se realizará $n$ recorridos que se puede decir que en cada uno de ellos se tomara ira tomando un identificador para ser asignado a una cola.
+		para ellos tomaremos el siguiente algoritmo:
+		
+		\begin{enumerate}
+			\item Tomar el primer elemento de el archivo origen.
+			\item seleccionar el dígito de menor valor posicional  y en base a ello agregar a el archivo asociado a ese numero. por ejemplo 153. Se iría a  el archivo 3.
+			\item Repetir el punto 2, pero ahora con el siguiente numero del archivo, hasta que se termine los números del archivo origen.
+			\item  Obtener los datos del archivo  $0,1,...,9$ en ese orden, al obtener los datos de cada archivo añadirlos a el archivo origen.
+			\item Repetir Desde el punto 1 pero ahora tomando el siguiente valor posicional, hasta el ultimo valor posicional,  por ejemplo en el caso del 153 , el ultimo valor posicional es 1.
+		\end{enumerate}
 		
 		\subsection{Algortimo de Polifase}
 		El ordenamiento por el método de polifase consiste en mezclar los elementos de un archivo hasta que esté vacío.
 		La ordenamiento se da de la siguiente manera:
 		
-		\begin{itemize}
+		\begin{enumerate}
 			\item Lee m llaves, se ordenan mediante un método interno y se genera un primer bloque, el cual se guarda en un primer archivo auxiliar.
 			\item Lee otras m llaves, se ordenan y se genera otro bloque que se guarda en un segundo archivo auxiliar.
 			\item Se leen otras m llaves y se ordenan, pero se guardan en el primer archivo en un segundo bloque. Se repiten los pasos anteriores.
-		\end{itemize} 
+		\end{enumerate} 
 		
 		La mezcla de los bloques se realiza de la siguiente manera:
 		
-		\begin{itemize}
+		\begin{enumerate}
 			\item Se intercalan los primeros bloques de cada archivo auxiliar, se ordenan y se guardan en un tercer archivo auxiliar.
 			\item Los siguientes bloques se ordenan y guardan en un cuarto archivo.
 			\item Se repiten los pasos hasta que se genere un único archivo con todas las claves ordenadas.
-		\end{itemize}
+		\end{enumerate}
 	
 	\section{Antecedentes}
 	Para la implementación de los métodos todos tienen como base fundamental a la clase \textit{BufferedReader} de Java la cual se encarga de
@@ -106,7 +117,7 @@
 	
 	En el menú de para seleccionar los métodos se encuentran las siguientes opciones: 0 para regresar al menú principal, 1 para el ordenaimento por
 	Distribución (Radix), 2 para el ordenamiento por Mezcla Equilibrada, 3 para el ordenamiento por Polifase, y si se mete algún otro valor se
-	entrará en un ciclo hasta seleccionar alguna de las opciones mencionadas.\\
+	entrará en un ciclo hasta seleccionar alguna de las opciones mencionadas.
 	
 	\paragraph*{Explicación de Polifase}
 	El primer paso del programa es determinar la ruta del archivo que se va a leer, para ello se utilizaron las clases de java.io pero a su vez
@@ -126,7 +137,7 @@
 	al archivo auxiliar correspondiente.\\
 	
 	El paso anterior se repite hasta que todas las claves se encuentren en un solo archivo auxiliar, que por lo general es un archivo impar. 
-	Por lo tanto, el proceso termina hasta que el último archivo auxiliar par generado se encuentre vacío.\\
+	Por lo tanto, el proceso termina hasta que el último archivo auxiliar par generado se encuentre vacío.
 	
 	\paragraph*{Explicación Radix Sort}
 	
