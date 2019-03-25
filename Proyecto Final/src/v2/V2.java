@@ -55,6 +55,11 @@ public class V2
                             case 2: //Mezcla Equilibrada
                             {
                                 System.out.println("Selecciono Equilibrada");
+				Scanner nombrea = new Scanner(System.in);
+                                System.out.println("Ingrese la ruta absoluta del archivo archivo: ");
+				String archivo = nombrea.next();
+				Equilibrada equilibrada= new equilibrada(archivo);
+				    
 
                             } 
                             break; 
