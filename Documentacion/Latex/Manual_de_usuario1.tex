@@ -1,9 +1,11 @@
-\documentclass{report}
+\documentclass[12pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
 \graphicspath{{imagenes}}
-\title{Manual del proyecto 1 para materia Estructuras de Datos 2}
+\title{Manual del proyecto I \\ Materia: \\Estructuras de Datos 2\\ 
+\large Métodos de ordenamiento}
+
 \author{
 	Equipo:\\
 	Barrera Peña Víctor Miguel \\
@@ -15,9 +17,41 @@
 \begin{document}
 	\maketitle
 	\chapter{Primeros pasos}
-	Buenas tardes querido usuario, gracias por usar este 
-	sss
+	Este programa  esta hecho para poder ordenar un archivo mediante 3 métodos de ordenamiento como son: Polifase, Radix, Mezcla equilibrada.
+	Para poder lograr el perfecto funcionamiento de este programa se tiene que considerar lo siguiente:
+	\begin{itemize}
+		\item No se debe borrar ningún archivo del programa, con esto quiero decir que si se genera un nuevo documento el programa, no se debe borrar, este automáticamente se borrará.
+		\item Si el programa especifica que se introduzca un número para seleccionar una opcion, no es valido introducir un carácter o signos diferentes a números, en caso de introducir estos, sucederá un error y tendrá que volverse a iniciar el programa.
+		\item No debe estar abierto durante la ejecución el archivo ``texto.txt'' , ya algunos editores de texto restringe la modificación de este durante la ejecución.
+	\end{itemize}
+	Para el archivo tiene a ordenar debe cumplir con ciertos requisitos para poder ser ordenado que se en listan a continuación:
+	\begin{itemize}
+		\item Tiene que llamarse ``texto.txt'' y tiene que estar en el escritorio de la computadora desde donde se ejecuta.
+		\item Dentro del contenido  archivo, debe empezar por un número.
+		\item La separación entre  números debe estar unicamente dada por una coma(,) y para delimitar un número (su final) también debe tener una. Por ejemplo el archivo contendría en su interior la siguiente cadena={3,9,6,}
+		\item El ordinal de números no esta determinado , es al gusto. 
+		\item En el archivo original no debe contener saltos de linea, en caso de contener, este debe empezar de nuevo con un número, y el anterior debe renglon debe haber terminado en coma.
+	\end{itemize}
 	
-	\chapter{Menú principal}
-	\chapter{termino del programa}
+	\chapter{Paso 1 ¿Qué desea hacer? (Menú principal)}
+	El menú principal al inicio sólo te muestra 2 opciones ``Salir'' o ``ordenar'' Seleccione alguno de los 2 introduciendo un número.
+	\begin{itemize}
+		\item Si se introduce `0' terminará la ejecución del programa.
+		\item Si introduce 1 , podrá acceder al menú donde seleccionará un método de ordenamiento (ver la sección de subsumen del manual de usuario).
+		\item Si se introduce otro número se le volverá a pedir un número hasta que escoja una de las 2 anteriores opciones
+	\end{itemize}
+
+	\chapter{Paso 2 Seleccione un método de ordenamiento (Menú de ordenamiento)}
+	Debe considerar que tiene que existir un archivo que desee emplear para ordenar, debe estar en el escritorio de su computadora.
+	
+	Aparecerá un menú donde usted podrá seleccionar con que método desea ordenar el archivo, introducirá un numero entre el 0 y el 3 de acuerdo al método de ordenamiento que desee.
+	Si introduce un número fuera de esta lista de valores, el programa igual que en el caso anterior, le preguntará por un número valido entre 0 y 3.
+
+	\chapter{Paso 3 Revisar el archivo ya ordenado}
+	En el escritorio de tu computadora, saldrá con el mismo nombre el archivo ``texto.txt'' y ya estará ordenado.
+	\\Podrá realizar otro ordenamiento, pero si lo realiza inmediatamente no sucederá nada, porqué ya esta ordenado. Lo mejor sería  darle `0' para que termine la ejecución y de esta manera revisarlo con más detenimiento.
+	
+	Con lo anterior dichos es posible decir que se termino con éxito el programa, si se presento un error es porque no se siguió las instrucciones de este manual,
+	o en su defecto hay un error que no esta asociado con este. 
+	En caso contrario Contactar con los creadores de este  programa.
 \end{document}
