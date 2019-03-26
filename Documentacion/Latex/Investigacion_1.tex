@@ -145,11 +145,14 @@
 	archivo de entrada y se repiten los pasos con los siguientes dígitos.
 	
 	\paragraph*{Explicación de Mezcla equilibrada}
-	El funcionamiento del programa se basa en leer un archivo dado, caracter a caracter e irlos añadiendo a una cadena que se guarda en una lista. 
-	Cuando un elemento es mayor al anterior se imprimen los contenidos de la lista en uno de los archivos agregando ':' como separación entre bloques y la lista se vacía. 
-	Después los dos archivos auxiliares se leen y se crean 2 listas cuyos contenidos se irán comparando e imprimiendo en el archivo hasta que alguna de las listas quede vacía, 
-	en ese caso se terminara de vaciar la lista restante en el archivo. Este procesos se repetira hasta que todos los bloques hayan sido insertados en el archivo original. 
-	Finalmente el proceso se repetira, hasta que quede completamente ordenado.
+	\begin{enumerate}
+		\item Se crea un objeto InputStream para tener un flujo constante de información usando el archivo que se va a ordenar y los printwritter con los archivos auxiliares donde se escribirán los bloques.
+		\item Se lee caracter a caracter para construir en una cadena el elemento a ordenar. Usando los valores de los caracteres se construye un valor int para poder comparar y saber cual dato es mayor y meterlo en una lista. Esto se repite hasta que el elemento actual sea menor que el anterior.
+		\item Cuando el bloque se ah completado la lista se va imprimiendo en un archivo auxiliar y se vacía, adicionalmente se agrega ':' para usar como separación entre bloques y se modifica una variable para alternar los archivos en los que se escribe.
+		\item Una vez que todo el archivo ah sido separado en bloques y escrito en los archivos auxiliares estos se leen de la misma manera que la anterior y se meten en 2 listas diferentes donde se iran comparando para ordenarlos nuevamente en el archivo original.
+		\item Repite hasta que quede completamente ordenado.
+		
+	\end{enumerate}
 	
 	\subsection{Pruebas}
 		\paragraph*{Pruebas previas de código}
