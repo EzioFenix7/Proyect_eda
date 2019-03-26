@@ -59,7 +59,7 @@ public class V2
                                 System.out.println("Ingrese la ruta absoluta del archivo archivo: ");
 				String archivo = nombrea.next();
 				Equilibrada equilibrada= new Equilibrada(archivo);
-				equilibrada.lectura();
+				equilibrada.equilibra();
 
                             } 
                             break; 
